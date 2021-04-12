@@ -1,48 +1,44 @@
 input.onButtonPressed(Button.A, function () {
-    if (!(input.logoIsPressed())) {
-        if (list[Itunfan] == 1) {
-            text_list[0] = "E"
-            Itunfan += 1
-            if (list[Itunfan] == 1) {
-                text_list[0] = "E"
-                Itunfan += 1
-                if (true) {
-                	
-                } else {
-                	
-                }
-            } else {
-            	
-            }
-        } else if (false) {
-        	
-        }
+    while (!(asdf == list.length)) {
+        basic.showString("" + (list[asdf]))
+        asdf += 1
+        basic.showString(",")
     }
+    asdf = 0
+    basic.clearScreen()
+})
+input.onButtonPressed(Button.B, function () {
+	
 })
 input.onLogoEvent(TouchButtonEvent.Touched, function () {
+    basic.clearScreen()
     led.plot(2, 2)
-    music.playTone(262, music.beat(BeatFraction.Whole))
+    music.ringTone(988)
     list[i] = 1
-    basic.pause(500)
+    basic.pause(100)
     if (input.logoIsPressed()) {
         led.plot(1, 2)
         led.plot(2, 2)
         led.plot(3, 2)
-        music.playTone(262, music.beat(BeatFraction.Whole))
         list[i] = 2
     }
-    i += 1
-    led.unplot(1, 2)
-    led.unplot(2, 2)
-    led.unplot(3, 2)
 })
 input.onLogoEvent(TouchButtonEvent.Released, function () {
-	
+    if (!(input.logoIsPressed())) {
+        i += 1
+        led.unplot(1, 2)
+        led.unplot(2, 2)
+        led.unplot(3, 2)
+        basic.pause(1000)
+        basic.showIcon(IconNames.Square)
+        list[i] = 0
+        i += 1
+        music.rest(music.beat(BeatFraction.Sixteenth))
+    }
 })
-let Itunfan = 0
-let text_list: string[] = []
+let asdf = 0
 let list: number[] = []
 let i = 0
 i = 0
-list = [0, 0, 0, 0, 0]
-text_list = ["", "", "", ""]
+list = [0]
+let text_list = [""]
