@@ -11,23 +11,32 @@ input.onButtonPressed(Button.B, function () {
 	
 })
 input.onLogoEvent(TouchButtonEvent.Touched, function () {
-    basic.clearScreen()
-    list[i] = 1
-    led.plot(2, 2)
     music.ringTone(988)
+    list[i] = 1
+    i += 1
+    led.plot(2, 2)
+    basic.clearScreen()
+    ano += 1
 })
 input.onLogoEvent(TouchButtonEvent.Released, function () {
-    basic.clearScreen()
-    i += 1
     music.rest(music.beat(BeatFraction.Sixteenth))
-    basic.pause(500)
-    basic.showIcon(IconNames.Square)
-    list[i] = 0
-    i += 1
 })
+let ano = 0
 let asdf = 0
 let list: number[] = []
 let i = 0
 i = 0
 list = [0]
 let text_list = [""]
+basic.forever(function () {
+    if (ano == 1 && !(input.logoIsPressed())) {
+        music.rest(music.beat(BeatFraction.Sixteenth))
+        basic.pause(200)
+        if (!(input.logoIsPressed())) {
+            list[i] = 0
+            i += 1
+        }
+        ano = 0
+        basic.showIcon(IconNames.Square)
+    }
+})
